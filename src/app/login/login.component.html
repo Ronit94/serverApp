@@ -1,0 +1,26 @@
+<!-- Login form -->
+<section class="alignment">
+ 	  <!-- Login form -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p class="h5 text-center mb-4">Sign in</p>
+
+  <div class="md-form">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <input type="text" formControlName="defaultFormEmail" id="defaultForm-email" required class="form-control" mdbInputDirective>
+    <label for="defaultForm-email">Your email</label>
+  </div>
+
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input type="password" formControlName="defaultFormPass" id="defaultForm-pass" required class="form-control" mdbInputDirective>
+    <label for="defaultForm-pass">Your password</label>
+  </div>
+
+  <div class="text-center">
+   <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+</form>
+<!-- Login form -->
+<!-- Login form -->
+
+</section>
