@@ -7,22 +7,22 @@ import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements {
-  ngOnInit() {
-  
+
+private username = new FormControl('')
+private password = new FormControl('')
+public isValid:boolean=false
+constructor(public fb: FormBuilder) {}
+
+loginForm: FormGroup = this.builder.group({
+    username: this.username,
+    password: this.password
+ });
+
+
+  onSubmit(){
+    if(this.loginForm.valid){
+      
+      
+    }
   }
-  loginForm: FormGroup; constructor(private fb: FormBuilder) {
-    this.loginForm = fb.group({
-        defaultFormEmail: ['', Validators.required],
-        defaultFormPass: ['', [Validators.required, Validators.minLength(8)]]
-      });
-  }
-  onSubmit() { 
-
-      alert('defaultFormEmail'+this.loginForm.defaultFormEmail)
-      alert('defaultFormEmail'+this.loginForm.defaultFormPass)
-
-   }
-
-
-
 }
