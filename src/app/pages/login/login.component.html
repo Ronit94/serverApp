@@ -2,7 +2,7 @@
   <div id="formContent">
     <!-- Tabs Titles -->
     <h2 class="active"> Sign In </h2>
-    <h2 class="inactive underlineHover" routerLink="/sign-up">Sign Up </h2>
+    <h2 class="inactive underlineHover" routerLink="/king">Sign Up </h2>
 
     <!-- Icon -->
     <div class="fadeIn first">
@@ -10,9 +10,9 @@
     </div>
 
     <!-- Login Form -->
-    <form role="form" novalidate (ngSubmit)="loginSubmit(input1,input2)">
+    <form role="form" #heroForm="ngForm" appIdentityRevealed (ngSubmit)="loginSubmit(emailInput,emailPassword)">
       <div class="form-group" [ngClass]="{'has-danger': email.invalid && error1,'has-success': email.valid && (email.dirty || email.touched)}">
-        <input type="text" class="form-control fadeIn second" name="email" placeholder="Email Address" required="">
+        <input type="text" class="form-control fadeIn second" name="email" placeholder="Email Address" required="" [(ngModel)]="model.email" #email="ngModel" #emailInput  pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
         <div class="form-control-feedback" *ngIf="email.errors && error1">
           <p *ngIf="email.errors.required">Email address is required.</p>
           <p *ngIf="email.errors.pattern">Email address must be in the proper format.</p>
@@ -21,7 +21,7 @@
       
 
       <div class="form-group"  [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="model.password" #password="ngModel" #emailPassword>
         <div>
             <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
                <i class="la la-eye"></i>
@@ -39,7 +39,7 @@
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" routerLink="/forgot-password">Forgot Password?</a>
+      <a class="underlineHover" routerLink="/king">Forgot Password?</a>
     </div>
   </div>
 </div>

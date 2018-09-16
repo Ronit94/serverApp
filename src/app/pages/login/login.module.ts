@@ -6,11 +6,12 @@ import {LoginRoutingModule} from './login-routing.module';
 
 import { LoginComponent } from "./login.component";
 
-
+import {FormsModule,FormGroup,FormControl} from '@angular/forms';
 @NgModule({
     imports:[
         CommonModule,
-        LoginRoutingModule
+        LoginRoutingModule,
+        FormsModule
     ],
     declarations:[LoginComponent]
 

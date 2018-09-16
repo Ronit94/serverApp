@@ -7,11 +7,14 @@ import { AppComponent } from "./app.component";
 //import {LoginComponent} from './login/login.component';
 
 import { AppRoutingModule } from ".//app-routing.module";
+import { SignupComponent } from './pages/signup/signup.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SignupComponent, ForgotPasswordComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpModule],
   providers: [],
   bootstrap: [AppComponent]
