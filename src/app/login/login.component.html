@@ -1,26 +1,45 @@
-<!-- Login form -->
-<section class="alignment">
- 	  <!-- Login form -->
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <p class="h5 text-center mb-4">Sign in</p>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+    <h2 class="inactive underlineHover" routerLink="/sign-up">Sign Up </h2>
 
-  <div class="md-form">
-    <i class="fa fa-envelope prefix grey-text"></i>
-    <input type="text" [formControl]="username" id="defaultForm-email" required class="form-control" mdbInputDirective>
-    <label for="defaultForm-email">Your email</label>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form role="form" novalidate (ngSubmit)="loginSubmit(input1,input2)">
+      <div class="form-group" [ngClass]="{'has-danger': email.invalid && error1,'has-success': email.valid && (email.dirty || email.touched)}">
+        <input type="text" class="form-control fadeIn second" name="email" placeholder="Email Address" required="">
+        <div class="form-control-feedback" *ngIf="email.errors && error1">
+          <p *ngIf="email.errors.required">Email address is required.</p>
+          <p *ngIf="email.errors.pattern">Email address must be in the proper format.</p>
+        </div>
+      </div>
+      
+
+      <div class="form-group"  [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <div>
+            <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
+               <i class="la la-eye"></i>
+            </span>
+            <span class="eye_crose_btn" (click)="showPass()"  *ngIf="!show_pass">
+               <i class="la la-eye-slash"></i>
+            </span>
+          </div>
+      </div>
+      
+      <div class="form-group">
+        <button class="btn fadeIn fourth btn-login" type="submit">Login</button>
+      </div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/forgot-password">Forgot Password?</a>
+    </div>
   </div>
-
-  <div class="md-form">
-    <i class="fa fa-lock prefix grey-text"></i>
-    <input type="password" [formControl]="password" id="defaultForm-pass" required class="form-control" mdbInputDirective>
-    <label for="defaultForm-pass">Your password</label>
-  </div>
-
-  <div class="text-center">
-   <button type="submit" class="btn btn-success" [disabled]="isValid">Submit</button>
-  </div>
-</form>
-<!-- Login form -->
-<!-- Login form -->
-
-</section>
+</div>

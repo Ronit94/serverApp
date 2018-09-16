@@ -1,28 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-home',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements {
+export class LoginComponent implements OnInit {
 
-private username = new FormControl('')
-private password = new FormControl('')
-public isValid:boolean=false
-constructor(public fb: FormBuilder) {}
+name="";
 
-loginForm: FormGroup = this.builder.group({
-    username: this.username,
-    password: this.password
- });
+  constructor() { }
 
-
-  onSubmit(){
-    if(this.loginForm.valid){
-      
-      
-    }
+  ngOnInit() {
   }
+
 }

@@ -1,45 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import {HttpModule} from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import {CommonhttpService} from './commonhttp.service'
+import { AppComponent } from "./app.component";
+//import {LoginComponent} from './login/login.component';
 
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '',   redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponentComponent }
-];
+import { AppRoutingModule } from ".//app-routing.module";
+
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    AdminComponent,
-    DashboardComponent,
-    PageNotFoundComponentComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    MDBBootstrapModule.forRoot(),
-     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
-  ],
-
-  schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [CommonhttpService],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
