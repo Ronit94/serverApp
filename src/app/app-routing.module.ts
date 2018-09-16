@@ -9,10 +9,6 @@ const routes: Routes = [
     loadChildren:'../app/login/login.module#LoginModule'
   },
   {
-    path: "posts",
-    loadChildren: "../app/posts/posts.module#PostsModule"
-  },
-  {
     path: "king",
     loadChildren: "../app/king/king.module#KingModule"
   }
