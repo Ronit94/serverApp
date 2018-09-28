@@ -1,4 +1,5 @@
 <div class="wrapper fadeInDown">
+  <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)" size = "large" color = "#fff" type = "ball-atom"></ngx-spinner>
   <div id="formContent">
     <!-- Tabs Titles -->
     <h2 class="active"> Sign In </h2>
@@ -10,18 +11,23 @@
     </div>
 
     <!-- Login Form -->
-    <form role="form" #heroForm="ngForm" appIdentityRevealed (ngSubmit)="loginSubmit(emailInput,emailPassword)">
-      <div class="form-group" [ngClass]="{'has-danger': email.invalid && error1,'has-success': email.valid && (email.dirty || email.touched)}">
-        <input type="text" class="form-control fadeIn second" name="email" placeholder="Email Address" required="" [(ngModel)]="model.email" #email="ngModel" #emailInput  pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
-        <div class="form-control-feedback" *ngIf="email.errors && error1">
-          <p *ngIf="email.errors.required">Email address is required.</p>
-          <p *ngIf="email.errors.pattern">Email address must be in the proper format.</p>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+       <div class="form-group">
+            <input type="text"  class="form-control fadeIn second" placeholder="Email Address" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
         </div>
-      </div>
       
 
       <div class="form-group"  [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="model.password" #password="ngModel" #emailPassword>
+        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+        
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
         <div>
             <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
                <i class="la la-eye"></i>

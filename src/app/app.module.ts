@@ -10,13 +10,13 @@ import { AppRoutingModule } from ".//app-routing.module";
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
-
+import { AuthService as AuthGuard } from './services/auth.service';
 
 
 @NgModule({
   declarations: [AppComponent, SignupComponent, ForgotPasswordComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpModule],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
