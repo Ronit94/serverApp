@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 
-import {LoginRoutingModule} from './login-routing.module';
+import {routing} from './login-routing';
 
 import { LoginComponent } from "./login.component";
 
@@ -14,7 +14,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 @NgModule({
     imports:[
         CommonModule,
-        LoginRoutingModule,
+        routing,
         FormsModule,
         NgxSpinnerModule,
         SweetAlert2Module.forRoot()

@@ -5,18 +5,13 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from "./app.component";
 //import {LoginComponent} from './login/login.component';
-
-import { AppRoutingModule } from ".//app-routing.module";
-import { SignupComponent } from './pages/signup/signup.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AuthService as AuthGuard } from './services/auth.service';
-
+import { routing } from './app-routing';
+import {AuthService} from './services/auth.service'
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, ForgotPasswordComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpModule],
-  providers: [AuthGuard],
+  declarations: [AppComponent],
+  imports: [BrowserModule, routing,FormsModule,HttpModule],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

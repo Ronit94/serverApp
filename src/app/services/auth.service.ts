@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Router, CanActivate } from '@angular/router';
-@Injectable()
-export class AuthService {
 
-  constructor(private jwtHelper: JwtHelperService,private router:Router) { }
-  public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
+
+@Injectable({providedIn: 'root'})
+export class AuthService {
+  isLoggedIn = false;
+
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
+
+  login(): Observable<boolean> {
+    return of(true).pipe(
+      delay(1000),
+      tap(val => this.isLoggedIn = true)
+    );
   }
-  canActivate(): boolean {
-    if (!this.isAuthenticated()) {
-      this.router.navigate(['login']);
-      return false;
-    }
-    return true;
+
+  logout(): void {
+    this.isLoggedIn = false;
   }
 }

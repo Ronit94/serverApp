@@ -36,12 +36,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',data.responseData.access_token)
         localStorage.setItem('refreshToken',data.responseData.refreshToken)
 
-        swal({
-          position: 'center',
+        const toast = swal.mixin({
+          toast: true,
+          position: 'bottom',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        toast({
           type: 'success',
-          title: 'You have successfully logged in',
-          showConfirmButton: true,
-          timer: 1500
+          title: 'Signed in successfully'
         })
         this.router.navigate(['/king'])
       }
