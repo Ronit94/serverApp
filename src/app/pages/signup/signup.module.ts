@@ -12,12 +12,15 @@ import {NgxSpinnerModule} from 'ngx-spinner'
 
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 @NgModule({
     imports:[
         CommonModule,
         routing,
         FormsModule,
         NgxSpinnerModule,
+        BsDatepickerModule.forRoot(),
         SweetAlert2Module.forRoot()
     ],
     declarations:[SignupComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild , NgZone } from '@angular/core';
+import { Component, OnInit,ViewChild , NgZone,ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {logIn} from '../../models/model';
@@ -16,7 +16,8 @@ export class SignupComponent implements OnInit {
   public fileToUpload:any=''
   public show_selected_image:boolean=false
   public Imageurl:any=''
-  ViewChild('ImageDiv') ImageDiv: ElementRef;
+  public ImageDiv:any;
+  public profileImage:any;
 
   ngOnInit() {
 
@@ -63,10 +64,6 @@ export class SignupComponent implements OnInit {
     
   }
 
-  dosomething(image,profileimage){
-    console.log(this.ImageDiv.nativeElement.offsetWidth);
-    console.log(this.ImageDiv.nativeElement.offsetHeight);
-  }
 
 
 
