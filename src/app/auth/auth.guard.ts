@@ -18,3 +18,21 @@ export class AuthGuard implements CanActivate {
         return false;
     }
 }
+
+@Injectable({providedIn: 'root'})
+export class NotAuthGuard implements CanActivate {
+
+    constructor(private authService: AuthService, private router: Router) { }
+
+    canActivate(next: ActivatedRouteSnapshot,state: RouterStateSnapshot) {
+        if (!localStorage.getItem('token')) {
+            //not  logged in so return true
+            return true;
+        }
+
+        // logged in so redirect to login page with the return url
+        //this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+        this.router.navigate(['/dashboard']);
+        return false;
+    }
+}

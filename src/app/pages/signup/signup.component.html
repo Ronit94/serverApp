@@ -1,3 +1,74 @@
-<p>
-  signup works!
-</p>
+<div class="wrapper fadeInDown">
+  <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)" size = "large" color = "#fff" type = "ball-atom"></ngx-spinner>
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="inactive underlineHover" routerLink="/login"> Sign In </h2>
+    <h2 class="active">Sign Up </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first profile-img-circle sign-img_circle">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" #ImageDiv />
+      <img src="{{Imageurl}}" alt="Image" id="image" #profileImage *ngIf="show_selected_image" (load)="dosomething(profileImage,ImageDiv)">
+      <div class="image-upload Profile_edit_btn signeup-Profile_btn">
+        <label for="file-input">
+         <img src="assets/images/file-upload-icon.png" style="pointer-events: none"/>
+        </label>
+        <input id="file-input" type='file' (change)="readUrl($event)" style="display: none;">
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+            <input type="text"  class="form-control fadeIn second" placeholder="Name" name="name" [(ngModel)]="model.name" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted }" required />
+            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Name is required</div>
+            </div>
+        </div>
+
+
+       <div class="form-group">
+            <input type="text"  class="form-control fadeIn second" placeholder="Email Address" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text"  class="form-control fadeIn second" placeholder="Phone No" name="phoneno" [(ngModel)]="model.phoneno" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneno.invalid }" required email />
+            <div *ngIf="f.submitted && phoneno.invalid" class="invalid-feedback">
+                <div *ngIf="phoneno.errors.required">Email is required</div>
+                <div *ngIf="phoneno.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+      
+
+      <div class="form-group"  [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
+        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+        
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <div>
+            <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
+               <i class="la la-eye"></i>
+            </span>
+            <span class="eye_crose_btn" (click)="showPass()"  *ngIf="!show_pass">
+               <i class="la la-eye-slash"></i>
+            </span>
+          </div>
+      </div>
+      
+      <div class="form-group">
+        <button class="btn fadeIn fourth btn-login" type="submit">Signup</button>
+      </div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/forgot-password">Forgot Password?</a>
+    </div>
+  </div>
+</div>

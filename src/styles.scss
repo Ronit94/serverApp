@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+@media only screen and (max-width:1199px){
+.profile-img-circle img {
+    margin: 0 auto;
+}
+.profile-img-circle img#image {
+  margin: 0px auto;
+  width: 115px;
+  height: 115px;
+}
+}

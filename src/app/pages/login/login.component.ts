@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           type: 'success',
           title: 'Signed in successfully'
         })
-        this.router.navigate(['/king'])
+        this.router.navigate(['/dashboard'])
       }
       this.spinnerService.hide()
     }))

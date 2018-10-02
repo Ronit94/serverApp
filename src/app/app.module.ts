@@ -6,7 +6,7 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from "./app.component";
 //import {LoginComponent} from './login/login.component';
 import { routing } from './app-routing';
-import {AuthService} from './services/auth.service'
+import {AuthService} from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
