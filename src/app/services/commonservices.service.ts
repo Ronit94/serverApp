@@ -14,6 +14,11 @@ export class CommonservicesService {
     return this.http.post(API_URL,obj).pipe(
       map(res => <apiResponse>res.json())
     )
-    
+  }
+  registerForm(obj):Observable<apiResponse>{
+    var API_URL =this.baseURL+"user/registration";
+    return this.http.post(API_URL,obj).pipe(
+      map(res => <apiResponse>res.json())
+    )
   }
 }

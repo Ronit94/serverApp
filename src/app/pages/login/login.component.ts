@@ -22,31 +22,41 @@ export class LoginComponent implements OnInit {
         swal({
           type: 'error',
           title: 'User missing',
-          text: 'Sorry User is not present',
+          text: data.responseText,
           footer: 'Please login again with correct credential'
         })
       }else if(data.responseCode==500){
         swal({
           type: 'error',
           title: 'Login Failed',
-          text: 'Something went wrong!',
+          text: data.responseText,
           footer: 'Please login again with correct credential'
         })
       }else if(data.responseCode==200 && data.responseData){
-        localStorage.setItem('token',data.responseData.access_token)
-        localStorage.setItem('refreshToken',data.responseData.refreshToken)
 
-        const toast = swal.mixin({
-          toast: true,
-          position: 'bottom',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        toast({
-          type: 'success',
-          title: 'Signed in successfully'
-        })
-        this.router.navigate(['/dashboard'])
+        if(data.responseData.is_active!=0){
+          localStorage.setItem('token',data.responseData.access_token)
+          localStorage.setItem('refreshToken',data.responseData.refreshToken)
+  
+          const toast = swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          toast({
+            type: 'success',
+            title: 'Signed in successfully'
+          })
+          this.router.navigate(['/dashboard'])
+        }else{
+          swal({
+            type: 'error',
+            title: 'User still not activated',
+            text: 'Please activate your user',
+            footer: 'Please check your mail to activate your account'
+          })
+        } 
       }
       this.spinnerService.hide()
     }))

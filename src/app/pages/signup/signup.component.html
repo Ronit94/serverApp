@@ -3,110 +3,89 @@
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Welcome</h3>
-                        <p>You are 30 seconds away from earning your own money!</p>
-                        <input type="submit" name="" value="Login"/><br/>
+                        <p>If already register please login</p>
+                        <input type="submit" name="" value="Login" routerLink="/login"/><br/>
                     </div>
                     <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-                            </li>
-                        </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Apply as a Employee</h3>
+                                <h3 class="register-heading">Be a zodiac, <span>Register</span> here</h3>
+                                <form name="form" [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()">
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                                <input type="text" formControlName="fullName" placeholder="Full Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+                                                <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.fullName.errors.required">Full Name is required</div>
+                                                </div>
                                         </div>
+                                        
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>Female </span> 
-                                                </label>
+                                            <input type="text" placeholder="Date of birth" class="form-control" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" bsDatepicker>
+                                            <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                                <div *ngIf="f.dob.errors.required">Date of birth is required</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                                        </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3  class="register-heading">Apply as a Hirer</h3>
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                            <input type="email" class="form-control" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                <div *ngIf="email.errors.required">Email is required</div>
+                                                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                                            </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Phone no" formControlName="phoneno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneno.errors }"  />
+                                            <div *ngIf="submitted && f.phoneno.errors" class="invalid-feedback">
+                                                <div *ngIf="f.phoneno.errors.required">Phone no is required</div>
+                                            </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                                <input type="text"  name="txtEmpPhone" class="form-control" placeholder="Company Name" formControlName="Company" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Company.errors }"  />
+                                                <div *ngIf="submitted && f.Company.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.Company.errors.required">Company is required</div>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                            </div>
+                                        </div>
+
+                                      <div class="form-group">
+                                        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                                        </div>
+                                    </div>
+                                        <!-- <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" formControlName="inlineDefaultRadiosExample">
+                                            <label class="custom-control-label" for="defaultInline1">Male</label>
+                                          </div>
+                                          
+                                          <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" formControlName="inlineDefaultRadiosExample">
+                                            <label class="custom-control-label" for="defaultInline2">Female</label>
+                                          </div> -->
+                                          <button class="btnRegister pull-left"  value="Register">Register</button> 
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                                        </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <div class="profile-img-circle sign-img_circle">
+                                            <img src="{{Imageurl}}" alt="Image" id="image" *ngIf="show_selected_image">
+                                                 <div class="image-upload Profile_edit_btn signeup-Profile_btn">
+                                                   <label for="file-input">
+                                                     <img src="assets/images/file-upload-icon.png" style="pointer-events: none"/>
+                                                   </label>
+                                                   <input id="file-input" type='file' (change)="readUrl($event)" formControlName="image">
+                                                 </div>
+                                           </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

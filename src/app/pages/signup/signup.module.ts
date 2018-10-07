@@ -6,7 +6,7 @@ import {routing} from './signup-routing';
 
 import { SignupComponent } from "./signup.component";
 
-import {FormsModule,FormGroup,FormControl} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import {NgxSpinnerModule} from 'ngx-spinner'
 
@@ -19,6 +19,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
         CommonModule,
         routing,
         FormsModule,
+        ReactiveFormsModule,
         NgxSpinnerModule,
         BsDatepickerModule.forRoot(),
         SweetAlert2Module.forRoot()
