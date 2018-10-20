@@ -2,7 +2,6 @@ import { Component, OnInit,ViewChild , NgZone,ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import { NgxSpinnerService } from 'ngx-spinner';
-import {logIn} from '../../models/model';
 import {CommonservicesService} from '../../services/commonservices.service'
 import swal from 'sweetalert2';
 import { error } from 'util';

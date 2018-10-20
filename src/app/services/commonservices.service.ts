@@ -21,4 +21,10 @@ export class CommonservicesService {
       map(res => <apiResponse>res.json())
     )
   }
+  checkUserEmail(obj):Observable<apiResponse>{
+    var API_URL =this.baseURL+"user/forgot-password";
+    return this.http.post(API_URL,obj).pipe(
+      map(res => <apiResponse>res.json())
+    )
+  }
 }

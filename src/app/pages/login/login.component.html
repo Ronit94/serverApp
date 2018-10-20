@@ -1,43 +1,45 @@
 <div class="wrapper fadeInDown">
-  <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)" size = "large" color = "#fff" type = "ball-atom"></ngx-spinner>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-atom"></ngx-spinner>
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Sign In </h2>
-    <h2 class="inactive underlineHover" routerLink="/signup">Sign Up </h2>
+    <h2 class="active cursorPointer"> Sign In </h2>
+    <h2 class="inactive underlineHover cursorPointer" routerLink="/signup">Sign Up </h2>
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      <img src="assets/images/icon.svg" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-       <div class="form-group">
-            <input type="text"  class="form-control fadeIn second" placeholder="Email Address" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
-            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                <div *ngIf="email.errors.required">Email is required</div>
-                <div *ngIf="email.errors.email">Email must be a valid email address</div>
-            </div>
+      <div class="form-group">
+        <input type="text" class="form-control fadeIn second" placeholder="Email Address" name="email" [(ngModel)]="model.email"
+          #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
         </div>
-      
+      </div>
 
-      <div class="form-group"  [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
-        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
-        
+
+      <div class="form-group" [ngClass]="{'has-danger': password.invalid && error2,'has-success': password.valid && (password.dirty || password.touched)}">
+        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+
         <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
         </div>
         <div>
-            <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
-               <i class="la la-eye"></i>
-            </span>
-            <span class="eye_crose_btn" (click)="showPass()"  *ngIf="!show_pass">
-               <i class="la la-eye-slash"></i>
-            </span>
-          </div>
+          <span class="eye_view_btn" (click)="showPass()" *ngIf="show_pass">
+            <i class="la la-eye"></i>
+          </span>
+          <span class="eye_crose_btn" (click)="showPass()" *ngIf="!show_pass">
+            <i class="la la-eye-slash"></i>
+          </span>
+        </div>
       </div>
-      
+
       <div class="form-group">
         <button class="btn fadeIn fourth btn-login" type="submit">Login</button>
       </div>
